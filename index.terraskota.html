@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,27 +29,22 @@
         }
     </script>
     <style>
-        .hero-pattern {
-            background-color: #FDF6F3;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C05621' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        /* Custom Scrollbar Hide */
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
         }
-
-        /* Tambahan di dalam <style> */
-    .scrollbar-hide::-webkit-scrollbar {
-        display: none;
-    }
-    .scrollbar-hide {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-    }
-    .floating-cart {
-        animation: slideUp 0.3s ease-out;
-    }
-    @keyframes slideUp {
-        from { transform: translateY(100%); }
-        to { transform: translateY(0); }
-    }
-
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
     </style>
 </head>
 <body class="font-sans text-terra-900 bg-terra-100">
@@ -65,7 +60,7 @@
                 <div class="hidden md:flex space-x-8 items-center">
                     <a href="#home" class="text-terra-900 hover:text-terra-500 font-medium transition">Beranda</a>
                     <a href="#about" class="text-terra-900 hover:text-terra-500 font-medium transition">Cerita Kami</a>
-                    <a href="#menu" class="text-terra-900 hover:text-terra-500 font-medium transition">Menu Favorit</a>
+                    <a href="#order" class="text-terra-900 hover:text-terra-500 font-medium transition">Pesan Online</a>
                     <a href="#location" class="text-terra-900 hover:text-terra-500 font-medium transition">Lokasi</a>
                     <a href="https://wa.me/628112931212" class="bg-terra-500 text-white px-6 py-2.5 rounded-full font-medium hover:bg-terra-800 transition shadow-lg hover:shadow-terra-500/30 transform hover:-translate-y-0.5">
                         Reservasi
@@ -73,45 +68,44 @@
                 </div>
 
                 <div class="md:hidden flex items-center">
-                    <button id="mobile-menu-btn" class="text-terra-800 focus:outline-none">
+                    <button id="mobile-menu-btn" class="text-terra-800 focus:outline-none p-2">
                         <i class="fas fa-bars text-2xl"></i>
                     </button>
                 </div>
             </div>
         </div>
 
-        <div class="md:hidden hidden bg-white border-t border-gray-100" id="mobile-menu">
-            <div class="px-4 pt-2 pb-4 space-y-1">
+        <div class="hidden bg-white border-t border-gray-100 absolute w-full" id="mobile-menu">
+            <div class="px-4 pt-2 pb-4 space-y-1 shadow-lg">
                 <a href="#home" class="block px-3 py-3 text-terra-900 font-medium hover:bg-terra-50 rounded-lg">Beranda</a>
                 <a href="#about" class="block px-3 py-3 text-terra-900 font-medium hover:bg-terra-50 rounded-lg">Cerita Kami</a>
-                <a href="#menu" class="block px-3 py-3 text-terra-900 font-medium hover:bg-terra-50 rounded-lg">Menu Favorit</a>
-                <a href="https://wa.me/628112931212" class="block px-3 py-3 text-terra-500 font-bold">Reservasi Sekarang</a>
+                <a href="#order" class="block px-3 py-3 text-terra-900 font-medium hover:bg-terra-50 rounded-lg">Pesan Menu</a>
+                <a href="#location" class="block px-3 py-3 text-terra-900 font-medium hover:bg-terra-50 rounded-lg">Lokasi</a>
+                <a href="https://wa.me/628112931212" class="block px-3 py-3 text-terra-500 font-bold border-t mt-2">Reservasi Sekarang</a>
             </div>
         </div>
     </nav>
 
     <section id="home" class="relative h-screen min-h-[600px] overflow-hidden">
-        
         <div id="hero-slider" class="absolute inset-0 z-0">
             <div class="slide absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-100">
-                <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=1920&auto=format&fit=crop" class="w-full h-full object-cover" alt="interior Night View">
-                <div class="absolute inset-0 bg-black/40"></div> </div>
-            
-            <div class="slide absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0">
-                <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover" alt="Exterior Night View">
+                <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=1920&auto=format&fit=crop" class="w-full h-full object-cover" alt="Interior Terraskota">
                 <div class="absolute inset-0 bg-black/40"></div>
             </div>
-
             <div class="slide absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0">
-                <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=1000&auto=format&fit=crop" class="w-full h-full object-cover" alt="Premium Dining">
+                <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=1920&auto=format&fit=crop" class="w-full h-full object-cover" alt="Premium Dining">
                 <div class="absolute inset-0 bg-black/40"></div>
+            </div>
+            <div class="slide absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0">
+                <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?q=80&w=1920&auto=format&fit=crop" class="w-full h-full object-cover" alt="Night Vibe">
+                <div class="absolute inset-0 bg-black/50"></div>
             </div>
         </div>
 
         <div class="relative z-10 h-full flex items-center">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-                <div class="max-w-3xl">
-                    <span class="inline-block py-1 px-3 rounded-full bg-terra-500/80 backdrop-blur-sm text-white font-semibold text-sm mb-6 tracking-wide border border-white/20 animate-fade-in-up">
+                <div class="max-w-3xl pt-20">
+                    <span class="inline-block py-1 px-3 rounded-full bg-terra-500/90 backdrop-blur-sm text-white font-semibold text-sm mb-6 tracking-wide border border-white/20">
                         WATES, KULON PROGO
                     </span>
                     <h1 class="text-5xl lg:text-7xl font-serif font-bold text-white leading-tight mb-6 drop-shadow-lg">
@@ -122,8 +116,8 @@
                         Nikmati perpaduan suasana nyaman dan cita rasa otentik. Destinasi kuliner dan kopi premium terbaik di Kulon Progo.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="#menu" class="px-8 py-4 bg-terra-500 text-white rounded-full font-semibold hover:bg-terra-600 transition shadow-lg text-center border-2 border-terra-500">
-                            Lihat Menu
+                        <a href="#order" class="px-8 py-4 bg-terra-500 text-white rounded-full font-semibold hover:bg-terra-600 transition shadow-lg text-center border-2 border-terra-500">
+                            Pesan Sekarang
                         </a>
                         <a href="#location" class="px-8 py-4 bg-transparent border-2 border-white text-white rounded-full font-semibold hover:bg-white hover:text-terra-900 transition flex items-center justify-center gap-2 backdrop-blur-sm">
                             <i class="fas fa-map-marker-alt"></i> Lokasi Kami
@@ -131,15 +125,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="absolute bottom-10 right-10 z-20 flex gap-2">
-            <button onclick="prevSlide()" class="w-12 h-12 rounded-full border border-white/30 text-white hover:bg-white hover:text-terra-900 flex items-center justify-center transition backdrop-blur-sm">
-                <i class="fas fa-arrow-left"></i>
-            </button>
-            <button onclick="nextSlide()" class="w-12 h-12 rounded-full border border-white/30 text-white hover:bg-white hover:text-terra-900 flex items-center justify-center transition backdrop-blur-sm">
-                <i class="fas fa-arrow-right"></i>
-            </button>
         </div>
     </section>
 
@@ -156,23 +141,21 @@
                         <i class="fas fa-utensils"></i>
                     </div>
                     <h3 class="font-bold text-xl mb-3">Complete Kitchen</h3>
-                    <p class="text-gray-600">Dari pasta creamy, burger juicy, hingga rice bowl mengenyangkan. Kami menyajikan makanan berat yang serius.</p>
+                    <p class="text-gray-600">Dari Steak premium, Pasta creamy, hingga Nasi Goreng Jawa. Makanan berat yang serius.</p>
                 </div>
-
                 <div class="p-8 rounded-2xl bg-terra-100 hover:shadow-xl transition duration-300 text-center group">
                     <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6 text-terra-500 text-2xl shadow-sm group-hover:scale-110 transition">
-                        <i class="fas fa-users"></i>
+                        <i class="fas fa-couch"></i>
                     </div>
                     <h3 class="font-bold text-xl mb-3">Spacious & Cozy</h3>
-                    <p class="text-gray-600">Area luas yang cocok untuk kumpul keluarga, meeting santai, atau sekedar mengerjakan tugas di sore hari.</p>
+                    <p class="text-gray-600">Area luas yang cocok untuk kumpul keluarga, meeting santai, atau sekedar mengerjakan tugas.</p>
                 </div>
-
                 <div class="p-8 rounded-2xl bg-terra-100 hover:shadow-xl transition duration-300 text-center group">
                     <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6 text-terra-500 text-2xl shadow-sm group-hover:scale-110 transition">
                         <i class="fas fa-coffee"></i>
                     </div>
                     <h3 class="font-bold text-xl mb-3">Signature Coffee</h3>
-                    <p class="text-gray-600">Es Kopi Susu Terras yang ikonik dan varian manual brew untuk penikmat kopi sejati di Kulon Progo.</p>
+                    <p class="text-gray-600">Es Kopi Susu Terras dan varian manual brew untuk penikmat kopi sejati.</p>
                 </div>
             </div>
         </div>
@@ -181,27 +164,27 @@
     <section id="order" class="py-20 bg-terra-100 min-h-screen">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-10">
-                <span class="text-terra-500 font-bold tracking-wider uppercase">Order & Delivery</span>
-                <h2 class="font-serif text-3xl lg:text-4xl font-bold text-terra-900 mt-2">Pesan Online</h2>
-                <p class="text-gray-600 mt-2">Pilih menu, masuk keranjang, dan kirim pesanan via WhatsApp.</p>
+                <span class="text-terra-500 font-bold tracking-wider uppercase">Self Order</span>
+                <h2 class="font-serif text-3xl lg:text-4xl font-bold text-terra-900 mt-2">Daftar Menu & Pesan</h2>
+                <p class="text-gray-600 mt-2">Klik tombol (+) untuk memasukkan menu ke keranjang.</p>
             </div>
 
-            <div class="flex overflow-x-auto gap-4 mb-8 pb-4 scrollbar-hide justify-start md:justify-center">
+            <div class="flex overflow-x-auto gap-3 mb-8 pb-4 scrollbar-hide justify-start md:justify-center px-2">
                 <button onclick="filterMenu('all')" class="filter-btn active px-6 py-2 rounded-full bg-terra-900 text-white whitespace-nowrap hover:bg-terra-800 transition shadow-md">Semua</button>
-                <button onclick="filterMenu('kitchen')" class="filter-btn px-6 py-2 rounded-full bg-white text-terra-900 whitespace-nowrap hover:bg-terra-50 transition shadow-sm">Kitchen / Berat</button>
+                <button onclick="filterMenu('kitchen')" class="filter-btn px-6 py-2 rounded-full bg-white text-terra-900 whitespace-nowrap hover:bg-terra-50 transition shadow-sm">Kitchen</button>
                 <button onclick="filterMenu('coffee')" class="filter-btn px-6 py-2 rounded-full bg-white text-terra-900 whitespace-nowrap hover:bg-terra-50 transition shadow-sm">Coffee</button>
                 <button onclick="filterMenu('non-coffee')" class="filter-btn px-6 py-2 rounded-full bg-white text-terra-900 whitespace-nowrap hover:bg-terra-50 transition shadow-sm">Non-Coffee</button>
-                <button onclick="filterMenu('snack')" class="filter-btn px-6 py-2 rounded-full bg-white text-terra-900 whitespace-nowrap hover:bg-terra-50 transition shadow-sm">Snack</button>
+                <button onclick="filterMenu('snack')" class="filter-btn px-6 py-2 rounded-full bg-white text-terra-900 whitespace-nowrap hover:bg-terra-50 transition shadow-sm">Snack & Donat</button>
             </div>
 
             <div class="flex flex-col lg:flex-row gap-8 items-start">
                 
                 <div class="lg:w-2/3 w-full">
-                    <div id="menu-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div id="menu-container" class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         </div>
                 </div>
 
-                <div class="lg:w-1/3 w-full lg:sticky lg:top-24">
+                <div class="lg:w-1/3 w-full lg:sticky lg:top-24 z-30">
                     <div class="bg-white p-6 rounded-2xl shadow-xl border border-terra-100">
                         <div class="flex justify-between items-center mb-4 border-b border-gray-100 pb-4">
                             <h3 class="font-serif text-xl font-bold text-terra-900">Pesanan Anda</h3>
@@ -209,12 +192,12 @@
                         </div>
                         
                         <div id="cart-items" class="space-y-4 max-h-[300px] overflow-y-auto mb-4 pr-2">
-                            <p class="text-gray-400 text-sm text-center py-8">Keranjang masih kosong.<br>Yuk pilih menu dulu!</p>
+                            <p class="text-gray-400 text-sm text-center py-8">Keranjang masih kosong.</p>
                         </div>
 
                         <div class="border-t border-gray-100 pt-4 space-y-4">
                             <div class="flex justify-between items-center text-lg font-bold text-terra-900">
-                                <span>Total</span>
+                                <span>Total Estimasi</span>
                                 <span id="cart-total">Rp 0</span>
                             </div>
                             
@@ -223,13 +206,12 @@
                                 <select id="order-type" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-terra-500 text-sm bg-white">
                                     <option value="Dine In">Makan di Tempat (Dine In)</option>
                                     <option value="Take Away">Bungkus (Take Away)</option>
-                                    <option value="Delivery">Delivery (Ojek Online)</option>
                                 </select>
                                 <textarea id="customer-note" placeholder="Catatan (opsional)" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-terra-500 text-sm resize-none h-20"></textarea>
                             </div>
 
                             <button onclick="checkoutWhatsApp()" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-xl transition flex items-center justify-center gap-2 shadow-lg hover:shadow-green-500/30">
-                                <i class="fab fa-whatsapp text-xl"></i> Kirim Pesanan
+                                <i class="fab fa-whatsapp text-xl"></i> Kirim ke Kasir
                             </button>
                         </div>
                     </div>
@@ -238,43 +220,7 @@
         </div>
     </section>
 
-    <section id="full-menu" class="py-20 bg-terra-100 overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <span class="text-terra-500 font-bold tracking-wider uppercase">Buku Menu Digital</span>
-                <h2 class="font-serif text-3xl lg:text-4xl font-bold text-terra-900 mt-2">Jelajahi Keseluruhan Rasa</h2>
-                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">Geser atau klik sudut buku di bawah ini untuk melihat semua hidangan dan minuman kami, lengkap dengan harga.</p>
-            </div>
-
-            <div class="relative w-full max-w-5xl mx-auto h-[500px] md:h-[700px] bg-white rounded-2xl shadow-[0_20px_50px_rgba(192,86,33,0.2)] border-4 border-terra-800/20 overflow-hidden p-2 md:p-4">
-                
-                <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/wood-pattern.png')] opacity-5 z-0 pointer-events-none"></div>
-
-                <div class="relative z-10 w-full h-full rounded-xl overflow-hidden shadow-inner bg-[#FDF6F3]">
-                    <iframe 
-                        src="https://online.fliphtml5.com/qstzy/bndm/?seamless=1" 
-                        width="100%" 
-                        height="100%" 
-                        seamless="seamless" 
-                        scrolling="no" 
-                        frameborder="0" 
-                        allowtransparency="true" 
-                        allowfullscreen="true"
-                        class="w-full h-full">
-                    </iframe>
-                </div>
-
-                <div class="absolute top-0 left-0 w-12 h-12 border-t-4 border-l-4 border-terra-500 rounded-tl-xl pointer-events-none hidden md:block"></div>
-                <div class="absolute bottom-0 right-0 w-12 h-12 border-b-4 border-r-4 border-terra-500 rounded-br-xl pointer-events-none hidden md:block"></div>
-            </div>
-
-            <div class="text-center mt-8">
-                 <p class="text-sm text-gray-500">Tips: Gunakan mode layar penuh (fullscreen) pada buku untuk pengalaman terbaik di ponsel.</p>
-            </div>
-        </div>
-    </section>
-
-   <section id="location" class="py-0 flex flex-col lg:flex-row h-auto lg:h-[500px]">
+    <section id="location" class="py-0 flex flex-col lg:flex-row h-auto lg:h-[500px]">
         <div class="lg:w-1/2 bg-terra-100 p-12 lg:p-20 flex flex-col justify-center">
             <h2 class="font-serif text-3xl font-bold text-terra-900 mb-6">Kunjungi Kami</h2>
             <div class="space-y-6 text-gray-700">
@@ -299,7 +245,7 @@
                 </div>
             </div>
             <div class="mt-8">
-                <a href="https://www.google.com/maps/search/?api=1&query=Terraskota+Coffee+%26+Kitchen+4593%2BW8+Giri+Peni" target="_blank" class="inline-block border-b-2 border-terra-500 text-terra-900 font-bold pb-1 hover:text-terra-500 transition">
+                <a href="https://maps.google.com/?q=Terraskota+Coffee+Kitchen+Wates" target="_blank" class="inline-block border-b-2 border-terra-500 text-terra-900 font-bold pb-1 hover:text-terra-500 transition">
                     Buka Petunjuk Arah (Google Maps)
                 </a>
             </div>
@@ -309,14 +255,13 @@
                 width="100%" 
                 height="100%" 
                 id="gmap_canvas" 
-                src="https://maps.google.com/maps?q=Terraskota%20Coffee%20%26%20Kitchen%20Wates&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                src="https://maps.google.com/maps?q=Terraskota%20Coffee%20Kitchen%20Wates&t=&z=15&ie=UTF8&iwloc=&output=embed" 
                 frameborder="0" 
                 scrolling="no" 
                 marginheight="0" 
                 marginwidth="0"
                 style="filter: grayscale(0.2) contrast(1.1);">
             </iframe>
-            
             <div class="absolute inset-0 bg-terra-500 mix-blend-multiply opacity-10 pointer-events-none"></div>
         </div>
     </section>
@@ -328,386 +273,213 @@
                 <p class="text-gray-400 text-sm">© 2025 Terraskota Coffee & Kitchen.</p>
                 <p class="text-terra-500 text-xs mt-1 font-mono">EST. Wates, Kulon Progo</p>
             </div>
-            
             <div class="flex space-x-6">
-                <a href="https://www.instagram.com/terraskota.yk/" target="_blank" class="text-gray-400 hover:text-pink-600 text-2xl transition transform hover:scale-110" aria-label="Instagram">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                
-                <a href="https://www.tiktok.com/@terraskota.yk" target="_blank" class="text-gray-400 hover:text-white text-2xl transition transform hover:scale-110" aria-label="TikTok">
-                    <i class="fab fa-tiktok"></i>
-                </a>
-                
-                <a href="https://wa.me/628112931212" target="_blank" class="text-gray-400 hover:text-green-500 text-2xl transition transform hover:scale-110" aria-label="WhatsApp">
-                    <i class="fab fa-whatsapp"></i>
-                </a>
+                <a href="https://www.instagram.com/terraskota.yk/" target="_blank" class="text-gray-400 hover:text-pink-600 text-2xl transition transform hover:scale-110"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@terraskota.yk" target="_blank" class="text-gray-400 hover:text-white text-2xl transition transform hover:scale-110"><i class="fab fa-tiktok"></i></a>
+                <a href="https://wa.me/628112931212" target="_blank" class="text-gray-400 hover:text-green-500 text-2xl transition transform hover:scale-110"><i class="fab fa-whatsapp"></i></a>
             </div>
         </div>
     </footer>
 
     <script>
-        // Simple Mobile Menu Toggle
-        const btn = document.getElementById('mobile-menu-btn');
-        const menu = document.getElementById('mobile-menu');
+        // --- 1. DATA MENU LENGKAP ---
+        const products = [
+            // KITCHEN
+            { id: 101, name: "Chicken Kwetiauw", price: 28000, category: "kitchen", desc: "Kwetiauw goreng ayam spesial.", img: "https://images.unsplash.com/photo-1552611052-33e04de081de?auto=format&fit=crop&w=300&q=80" },
+            { id: 102, name: "Beef Stew", price: 45000, category: "kitchen", desc: "Daging sapi, sayur dan saus coklat.", img: "https://images.unsplash.com/photo-1534939561126-855f8665b53e?auto=format&fit=crop&w=300&q=80" },
+            { id: 103, name: "Chicken Steak", price: 38000, category: "kitchen", desc: "Steak ayam, kentang tumbuk, sayur.", img: "https://images.unsplash.com/photo-1600891964092-4316c288032e?auto=format&fit=crop&w=300&q=80" },
+            { id: 104, name: "Rib Eye Aligot", price: 135000, category: "kitchen", desc: "Rib eye steak, keju, kentang tumbuk.", img: "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=300&q=80" },
+            { id: 105, name: "Roasted Half Chicken", price: 55000, category: "kitchen", desc: "Ayam panggang separuh.", img: "https://images.unsplash.com/photo-1598103442097-8b74394b95c6?auto=format&fit=crop&w=300&q=80" },
+            { id: 106, name: "Salmon Steak", price: 95000, category: "kitchen", desc: "Salmon steak, saus asam krim.", img: "https://images.unsplash.com/photo-1467003909585-2f8a7270028d?auto=format&fit=crop&w=300&q=80" },
+            { id: 107, name: "Fish N Chips", price: 45000, category: "kitchen", desc: "Ikan dori, kentang goreng.", img: "https://images.unsplash.com/photo-1579208575657-c595a05383b7?auto=format&fit=crop&w=300&q=80" },
+            { id: 108, name: "Chicken Parmigiana", price: 48000, category: "kitchen", desc: "Ayam, saus tomat, keju mozzarella.", img: "https://images.unsplash.com/photo-1632778149955-e80f8ceca2e8?auto=format&fit=crop&w=300&q=80" },
+            { id: 109, name: "Fried Noodle", price: 28000, category: "kitchen", desc: "Mie Goreng Spesial.", img: "https://images.unsplash.com/photo-1603133872878-684f208fb74b?auto=format&fit=crop&w=300&q=80" },
+            { id: 110, name: "Mie Godog", price: 28000, category: "kitchen", desc: "Mie kuah kaldu ayam.", img: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=300&q=80" },
+            { id: 111, name: "Nasi Goreng Jawa", price: 28000, category: "kitchen", desc: "Nasi goreng bumbu jawa otentik.", img: "https://images.unsplash.com/photo-1603133872878-684f208fb74b?auto=format&fit=crop&w=300&q=80" },
 
-        btn.addEventListener('click', () => {
-            menu.classList.toggle('hidden');
-        });
+            // COFFEE
+            { id: 201, name: "Black Coffee", price: 15000, category: "coffee", desc: "Kopi hitam polos.", img: "https://images.unsplash.com/photo-1494314671902-399b18174975?auto=format&fit=crop&w=300&q=80" },
+            { id: 202, name: "Single Espresso", price: 18000, category: "coffee", desc: "Full-flavored concentrated coffee.", img: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=300&q=80" },
+            { id: 204, name: "Hot Americano", price: 22000, category: "coffee", desc: "Espresso dengan air panas.", img: "https://images.unsplash.com/photo-1551024601-563778a83b71?auto=format&fit=crop&w=300&q=80" },
+            { id: 205, name: "Ice Americano", price: 24000, category: "coffee", desc: "Espresso dengan es batu.", img: "https://images.unsplash.com/photo-1517701604599-bb29b5c7fa69?auto=format&fit=crop&w=300&q=80" },
+            { id: 207, name: "Cappuccino", price: 28000, category: "coffee", desc: "Espresso dengan foam tebal.", img: "https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=300&q=80" },
+            { id: 210, name: "Ice Cafe Latte", price: 30000, category: "coffee", desc: "Espresso dengan susu dingin.", img: "https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?auto=format&fit=crop&w=300&q=80" },
+            { id: 214, name: "White Ginger", price: 28000, category: "coffee", desc: "Kopi, susu, dan jahe.", img: "https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=300&q=80" },
+            { id: 215, name: "Vietnamese Latte", price: 28000, category: "coffee", desc: "Kopi susu gula aren/dolce.", img: "https://images.unsplash.com/photo-1584286593173-06d91da71168?auto=format&fit=crop&w=300&q=80" },
+            { id: 216, name: "Creame Brulee", price: 32000, category: "coffee", desc: "Kopi susu topping karamel bakar.", img: "https://images.unsplash.com/photo-1461023058943-716d14ebd616?auto=format&fit=crop&w=300&q=80" },
 
-        // Navbar Scroll Effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('shadow-md');
-                navbar.classList.remove('py-4');
-            } else {
-                navbar.classList.remove('shadow-md');
-            }
-        });
-    </script>
+            // NON COFFEE
+            { id: 301, name: "Tea (Hot/Ice)", price: 10000, category: "non-coffee", desc: "Teh manis/tawar klasik.", img: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=300&q=80" },
+            { id: 303, name: "Lychee Red", price: 25000, category: "non-coffee", desc: "Teh, jahe, leci dan jeruk.", img: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=300&q=80" },
+            { id: 305, name: "Ice Lychee Tea", price: 22000, category: "non-coffee", desc: "Es teh buah leci asli.", img: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=300&q=80" },
+            { id: 309, name: "Red Tropical Smoothies", price: 32000, category: "non-coffee", desc: "Stroberi, leci, nanas.", img: "https://images.unsplash.com/photo-1505252585461-04db1eb84625?auto=format&fit=crop&w=300&q=80" },
+            { id: 315, name: "Chunky Monkey", price: 35000, category: "non-coffee", desc: "Pisang, cokelat, es krim.", img: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=300&q=80" },
+            { id: 318, name: "Milkshake Vanilla", price: 28000, category: "non-coffee", desc: "Susu es krim vanilla.", img: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=300&q=80" },
+            { id: 319, name: "Milkshake Chocolate", price: 28000, category: "non-coffee", desc: "Susu es krim cokelat.", img: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=300&q=80" },
 
-    <script>
-    // --- 1. DATA MENU LENGKAP (REAL DARI VIDEO) ---
-    // Kategori disederhanakan menjadi 4 agar filter berfungsi: 
-    // 'kitchen' (Western, Main Course, Breakfast)
-    // 'coffee' (Coffee based)
-    // 'non-coffee' (Tea, Juice, Smoothies, Blended, Milkshake)
-    // 'snack' (Donat, Sides, Salad)
+            // SNACK
+            { id: 401, name: "Bomboloni", price: 15000, category: "snack", desc: "Coklat / Tiramisu.", img: "https://images.unsplash.com/photo-1629892543329-37381297127e?auto=format&fit=crop&w=300&q=80" },
+            { id: 406, name: "Black Elmo", price: 16000, category: "snack", desc: "Donat karakter unik.", img: "https://images.unsplash.com/photo-1551024601-563778a83b71?auto=format&fit=crop&w=300&q=80" },
+            { id: 407, name: "Oreo Black Crumble", price: 16000, category: "snack", desc: "Donat remah Oreo hitam.", img: "https://images.unsplash.com/photo-1612240502280-9226cb181280?auto=format&fit=crop&w=300&q=80" },
+            { id: 411, name: "Lotus Biscoff", price: 18000, category: "snack", desc: "Donat biskuit Lotus.", img: "https://images.unsplash.com/photo-1619678077553-dfdf886f4a7c?auto=format&fit=crop&w=300&q=80" },
+            { id: 412, name: "Donut Bundle (Isi 6)", price: 85000, category: "snack", desc: "Paket hemat isi 6 varian!", img: "https://images.unsplash.com/photo-1558221230-5a3d70685747?auto=format&fit=crop&w=300&q=80" },
+            { id: 413, name: "Chicken Wings", price: 32000, category: "snack", desc: "Sayap ayam goreng.", img: "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format&fit=crop&w=300&q=80" },
+            { id: 415, name: "French Fries", price: 25000, category: "snack", desc: "Kentang goreng.", img: "https://images.unsplash.com/photo-1573080496987-a199f8cd4054?auto=format&fit=crop&w=300&q=80" },
+        ];
 
-    const products = [
-        // --- KITCHEN (Western & Main Course) ---
-        { id: 101, name: "Chicken Kwetiauw", price: 28000, category: "kitchen", desc: "Kwetiauw goreng ayam spesial untuk sarapan atau makan siang.", img: "https://images.unsplash.com/photo-1552611052-33e04de081de?auto=format&fit=crop&w=300&q=80" },
-        { id: 102, name: "Beef Stew", price: 45000, category: "kitchen", desc: "Beef, vegetable and brown sauce (Daging sapi, sayur dan saus coklat).", img: "https://images.unsplash.com/photo-1534939561126-855f8665b53e?auto=format&fit=crop&w=300&q=80" },
-        { id: 103, name: "Chicken Steak", price: 38000, category: "kitchen", desc: "Chicken steak, mashed potato, vegetable and choice sauce.", img: "https://images.unsplash.com/photo-1600891964092-4316c288032e?auto=format&fit=crop&w=300&q=80" },
-        { id: 104, name: "Rib Eye Aligot", price: 135000, category: "kitchen", desc: "Rib eye steak, sauteed vegetable, cheese, mashed potato.", img: "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=300&q=80" },
-        { id: 105, name: "Roasted Half Chicken", price: 55000, category: "kitchen", desc: "Ayam panggang separuh, mashed potato, sayur dan saus.", img: "https://images.unsplash.com/photo-1598103442097-8b74394b95c6?auto=format&fit=crop&w=300&q=80" },
-        { id: 106, name: "Salmon Steak", price: 95000, category: "kitchen", desc: "Salmon steak, mashed potato, vegetable with cream sour sauce.", img: "https://images.unsplash.com/photo-1467003909585-2f8a7270028d?auto=format&fit=crop&w=300&q=80" },
-        { id: 107, name: "Fish N Chips", price: 45000, category: "kitchen", desc: "Ikan dori goreng tepung, kentang goreng, sayur dan saus tar-tar.", img: "https://images.unsplash.com/photo-1579208575657-c595a05383b7?auto=format&fit=crop&w=300&q=80" },
-        { id: 108, name: "Chicken Parmigiana", price: 48000, category: "kitchen", desc: "Ayam, saus tomat, keju mozzarella dan pasta.", img: "https://images.unsplash.com/photo-1632778149955-e80f8ceca2e8?auto=format&fit=crop&w=300&q=80" },
-        { id: 109, name: "Fried Noodle (Mie Goreng)", price: 28000, category: "kitchen", desc: "Mie dengan potongan ayam, telur dan sayuran.", img: "https://images.unsplash.com/photo-1603133872878-684f208fb74b?auto=format&fit=crop&w=300&q=80" },
-        { id: 110, name: "Boiled Noodle (Mie Godog)", price: 28000, category: "kitchen", desc: "Mie kuah kaldu dengan potongan ayam, telur dan sayuran.", img: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=300&q=80" },
-        { id: 111, name: "Nasi Goreng Jawa", price: 28000, category: "kitchen", desc: "Nasi goreng bumbu jawa otentik.", img: "https://images.unsplash.com/photo-1603133872878-684f208fb74b?auto=format&fit=crop&w=300&q=80" },
+        // --- 2. KERANJANG BELANJA ---
+        let cart = [];
 
-        // --- COFFEE (Espresso Based & Signatures) ---
-        { id: 201, name: "Black Coffee", price: 15000, category: "coffee", desc: "Kopi hitam polos (Hot/Ice).", img: "https://images.unsplash.com/photo-1494314671902-399b18174975?auto=format&fit=crop&w=300&q=80" },
-        { id: 202, name: "Single Espresso", price: 18000, category: "coffee", desc: "Full-flavored concentrated coffee shot.", img: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=300&q=80" },
-        { id: 203, name: "Double Espresso", price: 22000, category: "coffee", desc: "Concentrated coffee in double shots.", img: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=300&q=80" },
-        { id: 204, name: "Hot Americano", price: 22000, category: "coffee", desc: "Double shot espresso dengan air panas.", img: "https://images.unsplash.com/photo-1551024601-563778a83b71?auto=format&fit=crop&w=300&q=80" },
-        { id: 205, name: "Ice Americano", price: 24000, category: "coffee", desc: "Double shot espresso dengan es batu.", img: "https://images.unsplash.com/photo-1517701604599-bb29b5c7fa69?auto=format&fit=crop&w=300&q=80" },
-        { id: 206, name: "Hot Piccolo", price: 25000, category: "coffee", desc: "Baby cafe latte (Latte versi bayi).", img: "https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=300&q=80" },
-        { id: 207, name: "Hot Cappuccino", price: 28000, category: "coffee", desc: "Espresso dengan susu panas dan foam tebal.", img: "https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=300&q=80" },
-        { id: 208, name: "Split Shot", price: 35000, category: "coffee", desc: "Satu shot espresso dan satu susu berdasarkan pilihan (Piccolo/Cappuccino/Latte).", img: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=300&q=80" },
-        { id: 209, name: "Hot Cafe Latte", price: 28000, category: "coffee", desc: "Espresso tunggal dan susu pemanasan dua pertiga.", img: "https://images.unsplash.com/photo-1570968992193-73e094f8ade3?auto=format&fit=crop&w=300&q=80" },
-        { id: 210, name: "Ice Cafe Latte", price: 30000, category: "coffee", desc: "Espresso tunggal dengan susu dingin.", img: "https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?auto=format&fit=crop&w=300&q=80" },
-        { id: 211, name: "Hot Cafe Mocha", price: 30000, category: "coffee", desc: "Espresso dengan susu dan cokelat panas.", img: "https://images.unsplash.com/photo-1578314675249-a6910f80cc4e?auto=format&fit=crop&w=300&q=80" },
-        { id: 212, name: "Ice Cafe Mocha", price: 32000, category: "coffee", desc: "Espresso dengan susu dan es cokelat.", img: "https://images.unsplash.com/photo-1578314675249-a6910f80cc4e?auto=format&fit=crop&w=300&q=80" },
-        { id: 213, name: "Affogato", price: 32000, category: "coffee", desc: "Es krim vanilla disiram satu shot espresso.", img: "https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?auto=format&fit=crop&w=300&q=80" },
-        { id: 214, name: "White Ginger", price: 28000, category: "coffee", desc: "Kopi, susu, dan jahe.", img: "https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=300&q=80" },
-        { id: 215, name: "Classic Vietnamese Latte", price: 28000, category: "coffee", desc: "Saus dolce, kopi, dan jahe.", img: "https://images.unsplash.com/photo-1584286593173-06d91da71168?auto=format&fit=crop&w=300&q=80" },
-        { id: 216, name: "Creame Brulee", price: 32000, category: "coffee", desc: "Kopi, susu, dan obor gula karamel.", img: "https://images.unsplash.com/photo-1461023058943-716d14ebd616?auto=format&fit=crop&w=300&q=80" },
-
-        // --- NON-COFFEE (Tea, Smoothies, Blended, Milkshake) ---
-        { id: 301, name: "Tea (Hot/Ice)", price: 10000, category: "non-coffee", desc: "Teh manis/tawar klasik.", img: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=300&q=80" },
-        { id: 302, name: "Watermelon Juice", price: 20000, category: "non-coffee", desc: "Jus semangka segar.", img: "https://images.unsplash.com/photo-1589734229739-99f2430263f6?auto=format&fit=crop&w=300&q=80" },
-        { id: 303, name: "Lychee Red", price: 25000, category: "non-coffee", desc: "Teh, jahe, leci dan jeruk.", img: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=300&q=80" },
-        { id: 304, name: "Ice Black Tea", price: 18000, category: "non-coffee", desc: "Perjalanan teh hitam yang kaya.", img: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=300&q=80" },
-        { id: 305, name: "Ice Lychee Tea", price: 22000, category: "non-coffee", desc: "Es teh dengan sensasi buah leci asli.", img: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=300&q=80" },
-        { id: 306, name: "Ice Lemon Tea", price: 20000, category: "non-coffee", desc: "Es teh dengan rasa lemon asli.", img: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=300&q=80" },
-        { id: 307, name: "Hot Lemon Tea", price: 20000, category: "non-coffee", desc: "Teh panas dengan rasa lemon asli.", img: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=300&q=80" },
-        { id: 308, name: "Hot Seasonal Tea", price: 25000, category: "non-coffee", desc: "English Breakfast / Earl Grey / Chamomile.", img: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=300&q=80" },
-        
-        // Smoothies
-        { id: 309, name: "Red Tropical Smoothies", price: 32000, category: "non-coffee", desc: "Stroberi, leci, nanas dan jus jeruk nipis.", img: "https://images.unsplash.com/photo-1505252585461-04db1eb84625?auto=format&fit=crop&w=300&q=80" },
-        { id: 310, name: "Pina Colada Smoothies", price: 32000, category: "non-coffee", desc: "Air kelapa, mangga, nanas dan sejumput garam.", img: "https://images.unsplash.com/photo-1546173159-315724a31696?auto=format&fit=crop&w=300&q=80" },
-        { id: 311, name: "Green Tropical Smoothies", price: 32000, category: "non-coffee", desc: "Bayam, mangga, pisang, nanas dan jus lemon.", img: "https://images.unsplash.com/photo-1610970881699-44a5587cabec?auto=format&fit=crop&w=300&q=80" },
-        { id: 312, name: "Hawaiian Tropical", price: 32000, category: "non-coffee", desc: "Mangga, jeruk, blueberry dan pisang.", img: "https://images.unsplash.com/photo-1505252585461-04db1eb84625?auto=format&fit=crop&w=300&q=80" },
-        { id: 313, name: "Red Dragon Smoothies", price: 32000, category: "non-coffee", desc: "Buah naga merah, nanas, apel dan jeruk nipis.", img: "https://images.unsplash.com/photo-1505252585461-04db1eb84625?auto=format&fit=crop&w=300&q=80" },
-
-        // Blended
-        { id: 314, name: "Hazzle Daz Blended", price: 35000, category: "non-coffee", desc: "Espresso, susu, cokelat, sirup macadamia, whipped cream.", img: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=300&q=80" },
-        { id: 315, name: "Chunky Monkey Blended", price: 35000, category: "non-coffee", desc: "Espresso, susu, pisang, cokelat, es krim cokelat.", img: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=300&q=80" },
-        { id: 316, name: "Red Velvet Popcorn", price: 35000, category: "non-coffee", desc: "Red velvet, susu, topping caramel popcorn.", img: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=300&q=80" },
-        { id: 317, name: "Choco Ichiban Blended", price: 35000, category: "non-coffee", desc: "Blended choco dengan jeruk dan es krim cokelat.", img: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=300&q=80" },
-
-        // Milkshake
-        { id: 318, name: "Milkshake Vanilla", price: 28000, category: "non-coffee", desc: "Susu dicampur vanilla ice cream dan sirup.", img: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=300&q=80" },
-        { id: 319, name: "Milkshake Chocolate", price: 28000, category: "non-coffee", desc: "Susu, es krim cokelat dan sirup cokelat.", img: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=300&q=80" },
-        { id: 320, name: "Milkshake Strawberry", price: 28000, category: "non-coffee", desc: "Milkshake vanila dengan strawberry segar.", img: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=300&q=80" },
-        { id: 321, name: "Milkshake Blueberry", price: 30000, category: "non-coffee", desc: "Milkshake vanila dengan blueberry segar.", img: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=300&q=80" },
-        { id: 322, name: "Milkshake Avocado", price: 30000, category: "non-coffee", desc: "Milkshake vanila dengan alpukat segar.", img: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=300&q=80" },
-
-        // --- SNACK (Donuts & Sides) ---
-        { id: 401, name: "Bomboloni", price: 15000, category: "snack", desc: "Coklat / Tiramisu.", img: "https://images.unsplash.com/photo-1629892543329-37381297127e?auto=format&fit=crop&w=300&q=80" },
-        { id: 402, name: "Bomboloni Fruit", price: 15000, category: "snack", desc: "Stroberi / Mangga / Pisang.", img: "https://images.unsplash.com/photo-1533513364239-2e77b67b55db?auto=format&fit=crop&w=300&q=80" },
-        { id: 403, name: "Raspberry Sprinkle", price: 15000, category: "snack", desc: "Donat dengan taburan raspberry.", img: "https://images.unsplash.com/photo-1551024601-563778a83b71?auto=format&fit=crop&w=300&q=80" },
-        { id: 404, name: "Choco Banana", price: 15000, category: "snack", desc: "Donat perpaduan cokelat dan pisang.", img: "https://images.unsplash.com/photo-1551024601-563778a83b71?auto=format&fit=crop&w=300&q=80" },
-        { id: 405, name: "Choco Raspberry", price: 15000, category: "snack", desc: "Donat cokelat dengan sentuhan raspberry.", img: "https://images.unsplash.com/photo-1551024601-563778a83b71?auto=format&fit=crop&w=300&q=80" },
-        { id: 406, name: "Black Elmo", price: 16000, category: "snack", desc: "Donat karakter unik.", img: "https://images.unsplash.com/photo-1551024601-563778a83b71?auto=format&fit=crop&w=300&q=80" },
-        { id: 407, name: "Oreo Black Crumble", price: 16000, category: "snack", desc: "Donat dengan remah Oreo hitam.", img: "https://images.unsplash.com/photo-1612240502280-9226cb181280?auto=format&fit=crop&w=300&q=80" },
-        { id: 408, name: "Kit Kat Choco Vanilla", price: 17000, category: "snack", desc: "Donat topping KitKat Vanilla.", img: "https://images.unsplash.com/photo-1619678077553-dfdf886f4a7c?auto=format&fit=crop&w=300&q=80" },
-        { id: 409, name: "Kit Kat Choco Caramel", price: 17000, category: "snack", desc: "Donat topping KitKat Caramel.", img: "https://images.unsplash.com/photo-1619678077553-dfdf886f4a7c?auto=format&fit=crop&w=300&q=80" },
-        { id: 410, name: "Almond Choco Vanilla", price: 17000, category: "snack", desc: "Donat dengan taburan almond renyah.", img: "https://images.unsplash.com/photo-1558221230-5a3d70685747?auto=format&fit=crop&w=300&q=80" },
-        { id: 411, name: "Lotus Biscoff Palm Sugar", price: 18000, category: "snack", desc: "Donat premium dengan biskuit Lotus.", img: "https://images.unsplash.com/photo-1619678077553-dfdf886f4a7c?auto=format&fit=crop&w=300&q=80" },
-        { id: 412, name: "Donut Bundle (Isi 6)", price: 85000, category: "snack", desc: "Paket hemat isi 6 varian favorit!", img: "https://images.unsplash.com/photo-1558221230-5a3d70685747?auto=format&fit=crop&w=300&q=80" },
-        
-        // Sides & Sharing
-        { id: 413, name: "Chicken Wings", price: 32000, category: "snack", desc: "Sayap ayam goreng (Sharing).", img: "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format&fit=crop&w=300&q=80" },
-        { id: 414, name: "Sausage", price: 25000, category: "snack", desc: "Sosis bakar/goreng.", img: "https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?auto=format&fit=crop&w=300&q=80" },
-        { id: 415, name: "French Fries", price: 25000, category: "snack", desc: "Kentang goreng.", img: "https://images.unsplash.com/photo-1573080496987-a199f8cd4054?auto=format&fit=crop&w=300&q=80" },
-        { id: 416, name: "Simple Salad", price: 25000, category: "snack", desc: "Lettuce, red cabbage, tomato cherry.", img: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=300&q=80" },
-    ];
-
-    // --- 2. LOGIC KERANJANG (Sama seperti sebelumnya) ---
-    let cart = [];
-
-    function renderMenu(category = 'all') {
-        const container = document.getElementById('menu-container');
-        container.innerHTML = '';
-
-        const filtered = category === 'all' ? products : products.filter(p => p.category === category);
-
-        filtered.forEach(product => {
-            const card = `
-                <div class="bg-white p-4 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition flex gap-4">
-                    <div class="w-24 h-24 flex-shrink-0 bg-gray-200 rounded-lg overflow-hidden relative">
-                        <img src="${product.img}" alt="${product.name}" class="w-full h-full object-cover">
-                    </div>
-                    <div class="flex-1 flex flex-col justify-between">
-                        <div>
-                            <h4 class="font-bold text-terra-900">${product.name}</h4>
-                            <p class="text-xs text-gray-500 line-clamp-2">${product.desc}</p>
+        function renderMenu(category = 'all') {
+            const container = document.getElementById('menu-container');
+            container.innerHTML = '';
+            const filtered = category === 'all' ? products : products.filter(p => p.category === category);
+            
+            filtered.forEach(product => {
+                const card = `
+                    <div class="bg-white p-4 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition flex gap-4 animate-fade-in">
+                        <div class="w-24 h-24 flex-shrink-0 bg-gray-200 rounded-lg overflow-hidden relative">
+                            <img src="${product.img}" alt="${product.name}" class="w-full h-full object-cover">
                         </div>
-                        <div class="flex justify-between items-center mt-2">
-                            <span class="font-bold text-terra-500">Rp ${product.price.toLocaleString('id-ID')}</span>
-                            <button onclick="addToCart(${product.id})" class="bg-terra-100 text-terra-800 w-8 h-8 rounded-full flex items-center justify-center hover:bg-terra-500 hover:text-white transition shadow-sm">
-                                <i class="fas fa-plus text-xs"></i>
-                            </button>
+                        <div class="flex-1 flex flex-col justify-between">
+                            <div>
+                                <h4 class="font-bold text-terra-900">${product.name}</h4>
+                                <p class="text-xs text-gray-500 line-clamp-2">${product.desc}</p>
+                            </div>
+                            <div class="flex justify-between items-center mt-2">
+                                <span class="font-bold text-terra-500">Rp ${product.price.toLocaleString('id-ID')}</span>
+                                <button onclick="addToCart(${product.id})" class="bg-terra-100 text-terra-800 w-8 h-8 rounded-full flex items-center justify-center hover:bg-terra-500 hover:text-white transition shadow-sm">
+                                    <i class="fas fa-plus text-xs"></i>
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            `;
-            container.innerHTML += card;
-        });
-    }
-
-    function filterMenu(category) {
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.classList.remove('bg-terra-900', 'text-white');
-            btn.classList.add('bg-white', 'text-terra-900');
-        });
-        event.target.classList.remove('bg-white', 'text-terra-900');
-        event.target.classList.add('bg-terra-900', 'text-white');
-        
-        renderMenu(category);
-    }
-
-    function addToCart(id) {
-        const product = products.find(p => p.id === id);
-        const existingItem = cart.find(item => item.id === id);
-
-        if (existingItem) {
-            existingItem.qty++;
-        } else {
-            cart.push({ ...product, qty: 1 });
-        }
-        updateCartUI();
-    }
-
-    function removeFromCart(id) {
-        const index = cart.findIndex(item => item.id === id);
-        if (index !== -1) {
-            if (cart[index].qty > 1) {
-                cart[index].qty--;
-            } else {
-                cart.splice(index, 1);
-            }
-        }
-        updateCartUI();
-    }
-
-    function updateCartUI() {
-        const cartItemsContainer = document.getElementById('cart-items');
-        const cartTotalEl = document.getElementById('cart-total');
-        const cartCountEl = document.getElementById('cart-count');
-        
-        cartItemsContainer.innerHTML = '';
-        let total = 0;
-        let count = 0;
-
-        if (cart.length === 0) {
-            cartItemsContainer.innerHTML = '<p class="text-gray-400 text-sm text-center py-8">Keranjang masih kosong.<br>Yuk pilih menu dulu!</p>';
-        } else {
-            cart.forEach(item => {
-                total += item.price * item.qty;
-                count += item.qty;
-                cartItemsContainer.innerHTML += `
-                    <div class="flex justify-between items-center text-sm border-b border-gray-50 py-2 last:border-0">
-                        <div class="flex-1">
-                            <p class="font-bold text-terra-900 line-clamp-1">${item.name}</p>
-                            <p class="text-xs text-gray-500">Rp ${item.price.toLocaleString()} x ${item.qty}</p>
-                        </div>
-                        <div class="flex items-center gap-2">
-                            <button onclick="removeFromCart(${item.id})" class="text-gray-400 hover:text-red-500 transition"><i class="fas fa-minus-circle"></i></button>
-                            <span class="font-bold w-4 text-center text-terra-900">${item.qty}</span>
-                            <button onclick="addToCart(${item.id})" class="text-terra-500 hover:text-terra-800 transition"><i class="fas fa-plus-circle"></i></button>
-                        </div>
-                    </div>
-                `;
+                    </div>`;
+                container.innerHTML += card;
             });
         }
 
-        cartTotalEl.innerText = 'Rp ' + total.toLocaleString('id-ID');
-        cartCountEl.innerText = count + ' Item';
-    }
-
-    // --- 3. CHECKOUT WHATSAPP ---
-    function checkoutWhatsApp() {
-        if (cart.length === 0) {
-            alert("Keranjang masih kosong, Mas/Mba. Pilih menu dulu ya!");
-            return;
+        function filterMenu(category) {
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('bg-terra-900', 'text-white');
+                btn.classList.add('bg-white', 'text-terra-900');
+            });
+            event.target.classList.remove('bg-white', 'text-terra-900');
+            event.target.classList.add('bg-terra-900', 'text-white');
+            renderMenu(category);
         }
 
-        const name = document.getElementById('customer-name').value;
-        const type = document.getElementById('order-type').value;
-        const note = document.getElementById('customer-note').value;
-
-        if (!name) {
-            alert("Mohon isi nama pemesan dulu ya agar tidak tertukar.");
-            return;
-        }
-
-        // Format Pesan WA yang Rapi
-        let message = `*Halo Admin Terraskota Wates!* 👋\nSaya mau pesan via Website:\n\n`;
-        message += `👤 *Nama:* ${name}\n`;
-        message += `🍽️ *Tipe:* ${type}\n`;
-        message += `--------------------------------\n`;
-        
-        let total = 0;
-        cart.forEach(item => {
-            const subtotal = item.price * item.qty;
-            total += subtotal;
-            message += `▪️ ${item.qty}x ${item.name} \n   (Rp ${subtotal.toLocaleString()})\n`;
-        });
-
-        message += `--------------------------------\n`;
-        message += `*TOTAL: Rp ${total.toLocaleString()}*\n`;
-        
-        if (note) {
-             message += `\n📝 *Catatan:* ${note}\n`;
-        }
-        
-        message += `\nMohon diproses ya, terima kasih!`;
-
-        const encodedMessage = encodeURIComponent(message);
-        // Nomor WhatsApp Terraskota (628112931212)
-        window.open(`https://wa.me/628112931212?text=${encodedMessage}`, '_blank');
-    }
-
-    // Initialize Menu saat halaman dimuat
-    document.addEventListener('DOMContentLoaded', () => {
-        renderMenu('all');
-    });
-
-    // --- HERO SLIDER LOGIC ---
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.slide');
-    const totalSlides = slides.length;
-    let slideInterval;
-
-    function showSlide(index) {
-        // Reset semua slide jadi transparan (opacity 0)
-        slides.forEach(slide => {
-            slide.classList.remove('opacity-100');
-            slide.classList.add('opacity-0');
-        });
-        
-        // Tampilkan slide yang aktif (opacity 100)
-        slides[index].classList.remove('opacity-0');
-        slides[index].classList.add('opacity-100');
-    }
-
-    function nextSlide() {
-        currentSlide = (currentSlide + 1) % totalSlides;
-        showSlide(currentSlide);
-    }
-
-    function prevSlide() {
-        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-        showSlide(currentSlide);
-    }
-
-    // Auto Play setiap 5 detik
-    function startSlideShow() {
-        slideInterval = setInterval(nextSlide, 5000);
-    }
-
-    // Stop auto play kalau user klik tombol (biar tidak bentrok)
-    function resetTimer() {
-        clearInterval(slideInterval);
-        startSlideShow();
-    }
-
-    // Event Listeners untuk tombol manual
-    document.querySelectorAll('#home button').forEach(btn => {
-        btn.addEventListener('click', resetTimer);
-    });
-
-    // Jalankan saat load
-    startSlideShow();
-
-    // --- 4. LOGIC NAVIGASI (YANG HILANG) ---
-    
-    // Toggle Menu Mobile (Tombol Garis Tiga)
-    const btn = document.getElementById('mobile-menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-
-    if (btn && mobileMenu) {
-        btn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-    }
-
-    // Efek Scroll Navbar (Transparan ke Warna)
-    window.addEventListener('scroll', () => {
-        const navbar = document.getElementById('navbar');
-        if (navbar) {
-            if (window.scrollY > 10) {
-                navbar.classList.add('shadow-md', 'bg-terra-100/95');
-                navbar.classList.remove('bg-transparent');
+        function addToCart(id) {
+            const product = products.find(p => p.id === id);
+            const existingItem = cart.find(item => item.id === id);
+            if (existingItem) {
+                existingItem.qty++;
             } else {
-                navbar.classList.remove('shadow-md', 'bg-terra-100/95');
-                // Kembalikan ke transparan/blur saat di paling atas
-                navbar.classList.add('bg-terra-100/90'); 
+                cart.push({ ...product, qty: 1 });
             }
+            updateCartUI();
         }
-    });
 
-    // Smooth Scroll untuk Desktop (Agar klik menu tidak loncat kasar)
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-            
-            if (targetElement) {
-                targetElement.scrollIntoView({
-                    behavior: 'smooth'
-                });
-                // Tutup menu mobile jika sedang dibuka
-                if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
-                    mobileMenu.classList.add('hidden');
+        function removeFromCart(id) {
+            const index = cart.findIndex(item => item.id === id);
+            if (index !== -1) {
+                if (cart[index].qty > 1) {
+                    cart[index].qty--;
+                } else {
+                    cart.splice(index, 1);
                 }
             }
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartTotalEl = document.getElementById('cart-total');
+            const cartCountEl = document.getElementById('cart-count');
+            
+            cartItemsContainer.innerHTML = '';
+            let total = 0;
+            let count = 0;
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p class="text-gray-400 text-sm text-center py-8">Keranjang masih kosong.<br>Yuk pilih menu dulu!</p>';
+            } else {
+                cart.forEach(item => {
+                    total += item.price * item.qty;
+                    count += item.qty;
+                    cartItemsContainer.innerHTML += `
+                        <div class="flex justify-between items-center text-sm border-b border-gray-50 py-2 last:border-0 animate-fade-in">
+                            <div class="flex-1">
+                                <p class="font-bold text-terra-900 line-clamp-1">${item.name}</p>
+                                <p class="text-xs text-gray-500">Rp ${item.price.toLocaleString()} x ${item.qty}</p>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <button onclick="removeFromCart(${item.id})" class="text-gray-400 hover:text-red-500 transition"><i class="fas fa-minus-circle"></i></button>
+                                <span class="font-bold w-4 text-center text-terra-900">${item.qty}</span>
+                                <button onclick="addToCart(${item.id})" class="text-terra-500 hover:text-terra-800 transition"><i class="fas fa-plus-circle"></i></button>
+                            </div>
+                        </div>`;
+                });
+            }
+            cartTotalEl.innerText = 'Rp ' + total.toLocaleString('id-ID');
+            cartCountEl.innerText = count + ' Item';
+        }
+
+        function checkoutWhatsApp() {
+            if (cart.length === 0) {
+                alert("Keranjang masih kosong, Mas/Mba. Pilih menu dulu ya!");
+                return;
+            }
+            const name = document.getElementById('customer-name').value;
+            const type = document.getElementById('order-type').value;
+            const note = document.getElementById('customer-note').value;
+            if (!name) {
+                alert("Mohon isi nama pemesan dulu ya.");
+                return;
+            }
+            let message = `*Halo Admin Terraskota Wates!* 👋\nSaya mau pesan via Website:\n\n👤 *Nama:* ${name}\n🍽️ *Tipe:* ${type}\n--------------------------------\n`;
+            let total = 0;
+            cart.forEach(item => {
+                const subtotal = item.price * item.qty;
+                total += subtotal;
+                message += `▪️ ${item.qty}x ${item.name} \n   (Rp ${subtotal.toLocaleString()})\n`;
+            });
+            message += `--------------------------------\n*TOTAL: Rp ${total.toLocaleString()}*\n`;
+            if (note) message += `\n📝 *Catatan:* ${note}\n`;
+            message += `\nMohon diproses ya, terima kasih!`;
+            window.open(`https://wa.me/628112931212?text=${encodeURIComponent(message)}`, '_blank');
+        }
+
+        // --- 3. SLIDER LOGIC ---
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        function nextSlide() {
+            slides[currentSlide].classList.remove('opacity-100');
+            slides[currentSlide].classList.add('opacity-0');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.remove('opacity-0');
+            slides[currentSlide].classList.add('opacity-100');
+        }
+        setInterval(nextSlide, 5000);
+
+        // --- 4. NAVIGATION LOGIC ---
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
         });
-    });
 
-    html {
-        scroll-behavior: smooth;
-    }
-        
-</script>
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 20) {
+                navbar.classList.add('bg-terra-100/95', 'shadow-md');
+                navbar.classList.remove('py-4');
+            } else {
+                navbar.classList.remove('bg-terra-100/95', 'shadow-md');
+            }
+        });
+
+        // Init
+        document.addEventListener('DOMContentLoaded', () => {
+            renderMenu('all');
+        });
+    </script>
 </body>
-
 </html>
-
-
