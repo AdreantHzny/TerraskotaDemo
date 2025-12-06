@@ -653,6 +653,53 @@
 
     // Jalankan saat load
     startSlideShow();
+
+    // --- 4. LOGIC NAVIGASI (YANG HILANG) ---
+    
+    // Toggle Menu Mobile (Tombol Garis Tiga)
+    const btn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (btn && mobileMenu) {
+        btn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    }
+
+    // Efek Scroll Navbar (Transparan ke Warna)
+    window.addEventListener('scroll', () => {
+        const navbar = document.getElementById('navbar');
+        if (navbar) {
+            if (window.scrollY > 10) {
+                navbar.classList.add('shadow-md', 'bg-terra-100/95');
+                navbar.classList.remove('bg-transparent');
+            } else {
+                navbar.classList.remove('shadow-md', 'bg-terra-100/95');
+                // Kembalikan ke transparan/blur saat di paling atas
+                navbar.classList.add('bg-terra-100/90'); 
+            }
+        }
+    });
+
+    // Smooth Scroll untuk Desktop (Agar klik menu tidak loncat kasar)
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth'
+                });
+                // Tutup menu mobile jika sedang dibuka
+                if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            }
+        });
+    });
 </script>
 </body>
+
 </html>
