@@ -115,12 +115,10 @@
                     <p class="text-lg lg:text-xl text-gray-100 mb-8 leading-relaxed max-w-lg drop-shadow-md">
                         Nikmati perpaduan suasana nyaman dan cita rasa otentik. Destinasi kuliner dan kopi premium terbaik di Kulon Progo.
                     </p>
-                    
                     <div class="flex flex-col sm:flex-row gap-4">
                         <a href="#order" class="px-8 py-4 bg-terra-500 text-white rounded-full font-semibold hover:bg-terra-600 transition shadow-lg text-center border-2 border-terra-500">
                             Pesan (Delivery/Dine In)
                         </a>
-                        
                         <a href="https://gofood.co.id/yogyakarta/restaurant/terraskota-coffee-kitchen-wates-0cc8d7e6-f2b5-4c67-8718-00f9f5cf369b" target="_blank" class="px-8 py-4 bg-white text-green-600 rounded-full font-bold hover:bg-green-50 transition flex items-center justify-center gap-2 shadow-lg border-2 border-white">
                             <i class="fas fa-motorcycle"></i> Order GoFood
                         </a>
@@ -136,7 +134,6 @@
                 <h2 class="font-serif text-3xl lg:text-4xl font-bold text-terra-900 mb-4">Lebih Dari Sekedar Kopi</h2>
                 <div class="w-20 h-1 bg-terra-500 mx-auto"></div>
             </div>
-            
             <div class="grid md:grid-cols-3 gap-8">
                 <div class="p-8 rounded-2xl bg-terra-100 hover:shadow-xl transition duration-300 text-center group">
                     <div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-6 text-terra-500 text-2xl shadow-sm group-hover:scale-110 transition">
@@ -246,7 +243,6 @@
                     <div>
                         <p class="font-bold text-terra-900">Terraskota Coffee & Kitchen</p>
                         <p>Jl. Pahlawan No.2-13, Sideman, Giri Peni,<br>Wates, Kulon Progo, DIY 55651</p>
-                        <p class="text-xs text-gray-500 mt-1">(Titik Plus Code: 4593+W8)</p>
                     </div>
                 </div>
                 <div class="flex items-start gap-4">
@@ -268,17 +264,7 @@
             </div>
         </div>
         <div class="lg:w-1/2 h-96 lg:h-auto bg-gray-200 relative">
-            <iframe 
-                width="100%" 
-                height="100%" 
-                id="gmap_canvas" 
-                src="https://maps.google.com/maps?q=Terraskota%20Coffee%20Kitchen%20Wates&t=&z=15&ie=UTF8&iwloc=&output=embed" 
-                frameborder="0" 
-                scrolling="no" 
-                marginheight="0" 
-                marginwidth="0"
-                style="filter: grayscale(0.2) contrast(1.1);">
-            </iframe>
+            <iframe width="100%" height="100%" id="gmap_canvas" src="https://maps.google.com/maps?q=Terraskota%20Coffee%20Kitchen%20Wates&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" style="filter: grayscale(0.2) contrast(1.1);"></iframe>
             <div class="absolute inset-0 bg-terra-500 mix-blend-multiply opacity-10 pointer-events-none"></div>
         </div>
     </section>
@@ -299,9 +285,9 @@
     </footer>
 
     <script>
-        // --- 1. DATA MENU LENGKAP ---
+        // --- DATA MENU LENGKAP (UPDATE SESUAI VIDEO) ---
         const products = [
-            // KITCHEN
+            // === KITCHEN / WESTERN / MAIN COURSE ===
             { id: 101, name: "Chicken Kwetiauw", price: 28000, category: "kitchen", desc: "Kwetiauw goreng ayam spesial.", img: "https://images.unsplash.com/photo-1552611052-33e04de081de?auto=format&fit=crop&w=300&q=80" },
             { id: 102, name: "Beef Stew", price: 45000, category: "kitchen", desc: "Daging sapi, sayur dan saus coklat.", img: "https://images.unsplash.com/photo-1534939561126-855f8665b53e?auto=format&fit=crop&w=300&q=80" },
             { id: 103, name: "Chicken Steak", price: 38000, category: "kitchen", desc: "Steak ayam, kentang tumbuk, sayur.", img: "https://images.unsplash.com/photo-1600891964092-4316c288032e?auto=format&fit=crop&w=300&q=80" },
@@ -311,40 +297,79 @@
             { id: 107, name: "Fish N Chips", price: 45000, category: "kitchen", desc: "Ikan dori, kentang goreng.", img: "https://images.unsplash.com/photo-1579208575657-c595a05383b7?auto=format&fit=crop&w=300&q=80" },
             { id: 108, name: "Chicken Parmigiana", price: 48000, category: "kitchen", desc: "Ayam, saus tomat, keju mozzarella.", img: "https://images.unsplash.com/photo-1632778149955-e80f8ceca2e8?auto=format&fit=crop&w=300&q=80" },
             { id: 109, name: "Fried Noodle", price: 28000, category: "kitchen", desc: "Mie Goreng Spesial.", img: "https://images.unsplash.com/photo-1603133872878-684f208fb74b?auto=format&fit=crop&w=300&q=80" },
-            { id: 110, name: "Mie Godog", price: 28000, category: "kitchen", desc: "Mie kuah kaldu ayam.", img: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=300&q=80" },
+            { id: 110, name: "Boiled Noodle (Godog)", price: 28000, category: "kitchen", desc: "Mie kuah kaldu ayam.", img: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=300&q=80" },
             { id: 111, name: "Nasi Goreng Jawa", price: 28000, category: "kitchen", desc: "Nasi goreng bumbu jawa otentik.", img: "https://images.unsplash.com/photo-1603133872878-684f208fb74b?auto=format&fit=crop&w=300&q=80" },
+            
+            // Sharing Steak (Baru Ditambahkan)
+            { id: 112, name: "Sharing Steak For 3 (Rib Eye)", price: 280000, category: "kitchen", desc: "Paket Sharing Rib Eye + Sides.", img: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=300&q=80" },
+            { id: 113, name: "Sharing Chicken Breast", price: 150000, category: "kitchen", desc: "Paket Sharing Dada Ayam.", img: "https://images.unsplash.com/photo-1600891964092-4316c288032e?auto=format&fit=crop&w=300&q=80" },
 
-            // COFFEE
+            // === COFFEE ===
             { id: 201, name: "Black Coffee", price: 15000, category: "coffee", desc: "Kopi hitam polos.", img: "https://images.unsplash.com/photo-1494314671902-399b18174975?auto=format&fit=crop&w=300&q=80" },
             { id: 202, name: "Single Espresso", price: 18000, category: "coffee", desc: "Full-flavored concentrated coffee.", img: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=300&q=80" },
+            { id: 203, name: "Double Espresso", price: 22000, category: "coffee", desc: "Double shot espresso.", img: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=300&q=80" },
             { id: 204, name: "Hot Americano", price: 22000, category: "coffee", desc: "Espresso dengan air panas.", img: "https://images.unsplash.com/photo-1551024601-563778a83b71?auto=format&fit=crop&w=300&q=80" },
             { id: 205, name: "Ice Americano", price: 24000, category: "coffee", desc: "Espresso dengan es batu.", img: "https://images.unsplash.com/photo-1517701604599-bb29b5c7fa69?auto=format&fit=crop&w=300&q=80" },
-            { id: 207, name: "Cappuccino", price: 28000, category: "coffee", desc: "Espresso dengan foam tebal.", img: "https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=300&q=80" },
+            { id: 206, name: "Hot Piccolo", price: 25000, category: "coffee", desc: "Baby latte.", img: "https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=300&q=80" },
+            { id: 207, name: "Hot Cappuccino", price: 28000, category: "coffee", desc: "Espresso dengan foam tebal.", img: "https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=300&q=80" },
+            { id: 208, name: "Split Shot", price: 30000, category: "coffee", desc: "Satu espresso & satu milk based.", img: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=300&q=80" },
+            { id: 209, name: "Hot Cafe Latte", price: 28000, category: "coffee", desc: "Espresso dengan susu panas.", img: "https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?auto=format&fit=crop&w=300&q=80" },
             { id: 210, name: "Ice Cafe Latte", price: 30000, category: "coffee", desc: "Espresso dengan susu dingin.", img: "https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?auto=format&fit=crop&w=300&q=80" },
+            { id: 211, name: "Hot Cafe Mocha", price: 30000, category: "coffee", desc: "Kopi susu cokelat panas.", img: "https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=300&q=80" },
+            { id: 212, name: "Ice Cafe Mocha", price: 32000, category: "coffee", desc: "Kopi susu cokelat dingin.", img: "https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=300&q=80" },
+            { id: 213, name: "Affogato", price: 28000, category: "coffee", desc: "Es krim vanilla siram espresso.", img: "https://images.unsplash.com/photo-1517701604599-bb29b5c7fa69?auto=format&fit=crop&w=300&q=80" },
             { id: 214, name: "White Ginger", price: 28000, category: "coffee", desc: "Kopi, susu, dan jahe.", img: "https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=300&q=80" },
             { id: 215, name: "Vietnamese Latte", price: 28000, category: "coffee", desc: "Kopi susu gula aren/dolce.", img: "https://images.unsplash.com/photo-1584286593173-06d91da71168?auto=format&fit=crop&w=300&q=80" },
             { id: 216, name: "Creame Brulee", price: 32000, category: "coffee", desc: "Kopi susu topping karamel bakar.", img: "https://images.unsplash.com/photo-1461023058943-716d14ebd616?auto=format&fit=crop&w=300&q=80" },
 
-            // NON COFFEE
-            { id: 301, name: "Tea (Hot/Ice)", price: 10000, category: "non-coffee", desc: "Teh manis/tawar klasik.", img: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=300&q=80" },
-            { id: 303, name: "Lychee Red", price: 25000, category: "non-coffee", desc: "Teh, jahe, leci dan jeruk.", img: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=300&q=80" },
-            { id: 305, name: "Ice Lychee Tea", price: 22000, category: "non-coffee", desc: "Es teh buah leci asli.", img: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=300&q=80" },
-            { id: 309, name: "Red Tropical Smoothies", price: 32000, category: "non-coffee", desc: "Stroberi, leci, nanas.", img: "https://images.unsplash.com/photo-1505252585461-04db1eb84625?auto=format&fit=crop&w=300&q=80" },
-            { id: 315, name: "Chunky Monkey", price: 35000, category: "non-coffee", desc: "Pisang, cokelat, es krim.", img: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=300&q=80" },
-            { id: 318, name: "Milkshake Vanilla", price: 28000, category: "non-coffee", desc: "Susu es krim vanilla.", img: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=300&q=80" },
-            { id: 319, name: "Milkshake Chocolate", price: 28000, category: "non-coffee", desc: "Susu es krim cokelat.", img: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=300&q=80" },
+            // === NON COFFEE & BEVERAGES ===
+            { id: 301, name: "Ice Black Tea", price: 10000, category: "non-coffee", desc: "Es teh manis/tawar.", img: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=300&q=80" },
+            { id: 302, name: "Lychee Red", price: 25000, category: "non-coffee", desc: "Teh, jahe, leci dan jeruk.", img: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=300&q=80" },
+            { id: 303, name: "Ice Lychee Tea", price: 22000, category: "non-coffee", desc: "Es teh buah leci asli.", img: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=300&q=80" },
+            { id: 304, name: "Ice Lemon Tea", price: 20000, category: "non-coffee", desc: "Es teh lemon segar.", img: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=300&q=80" },
+            { id: 305, name: "Hot Lemon Tea", price: 18000, category: "non-coffee", desc: "Teh lemon panas.", img: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=300&q=80" },
+            { id: 306, name: "Hot Seasonal Tea", price: 20000, category: "non-coffee", desc: "Earl Grey / Chamomile.", img: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=300&q=80" },
+            { id: 307, name: "Watermelon Juice", price: 25000, category: "non-coffee", desc: "Jus semangka segar.", img: "https://images.unsplash.com/photo-1595981267035-7b04ca84a82d?auto=format&fit=crop&w=300&q=80" },
+            
+            // Smoothies
+            { id: 308, name: "Red Tropical Smoothies", price: 32000, category: "non-coffee", desc: "Stroberi, leci, nanas.", img: "https://images.unsplash.com/photo-1505252585461-04db1eb84625?auto=format&fit=crop&w=300&q=80" },
+            { id: 309, name: "Pina Colada Smoothies", price: 32000, category: "non-coffee", desc: "Air kelapa, mangga, nanas.", img: "https://images.unsplash.com/photo-1505252585461-04db1eb84625?auto=format&fit=crop&w=300&q=80" },
+            { id: 310, name: "Green Tropical Smoothies", price: 32000, category: "non-coffee", desc: "Bayam, mangga, pisang.", img: "https://images.unsplash.com/photo-1505252585461-04db1eb84625?auto=format&fit=crop&w=300&q=80" },
+            { id: 311, name: "Hawaiian Tropical", price: 32000, category: "non-coffee", desc: "Mangga, jeruk, blueberry.", img: "https://images.unsplash.com/photo-1505252585461-04db1eb84625?auto=format&fit=crop&w=300&q=80" },
+            { id: 312, name: "Red Dragon Smoothies", price: 32000, category: "non-coffee", desc: "Buah naga merah, nanas.", img: "https://images.unsplash.com/photo-1505252585461-04db1eb84625?auto=format&fit=crop&w=300&q=80" },
 
-            // SNACK
+            // Milkshake & Blended
+            { id: 313, name: "Milkshake Vanilla", price: 28000, category: "non-coffee", desc: "Susu es krim vanilla.", img: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=300&q=80" },
+            { id: 314, name: "Milkshake Chocolate", price: 28000, category: "non-coffee", desc: "Susu es krim cokelat.", img: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=300&q=80" },
+            { id: 315, name: "Milkshake Strawberry", price: 28000, category: "non-coffee", desc: "Susu es krim stroberi.", img: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=300&q=80" },
+            { id: 316, name: "Milkshake Avocado", price: 30000, category: "non-coffee", desc: "Susu es krim alpukat.", img: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=300&q=80" },
+            { id: 317, name: "Hazzle Daz Blended", price: 35000, category: "non-coffee", desc: "Cokelat, macadamia, whipped cream.", img: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=300&q=80" },
+            { id: 318, name: "Chunky Monkey", price: 35000, category: "non-coffee", desc: "Pisang, cokelat, es krim.", img: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=300&q=80" },
+            { id: 319, name: "Red Velvet Popcorn", price: 35000, category: "non-coffee", desc: "Red velvet blend + popcorn.", img: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=300&q=80" },
+
+            // === SNACK & DONAT ===
             { id: 401, name: "Bomboloni", price: 15000, category: "snack", desc: "Coklat / Tiramisu.", img: "https://images.unsplash.com/photo-1629892543329-37381297127e?auto=format&fit=crop&w=300&q=80" },
+            { id: 402, name: "Bomboloni Fruit", price: 16000, category: "snack", desc: "Stroberi / Mangga / Pisang.", img: "https://images.unsplash.com/photo-1629892543329-37381297127e?auto=format&fit=crop&w=300&q=80" },
+            { id: 403, name: "Raspberry Sprinkle", price: 15000, category: "snack", desc: "Donat topping raspberry.", img: "https://images.unsplash.com/photo-1612240502280-9226cb181280?auto=format&fit=crop&w=300&q=80" },
+            { id: 404, name: "Choco Banana", price: 15000, category: "snack", desc: "Donat pisang cokelat.", img: "https://images.unsplash.com/photo-1612240502280-9226cb181280?auto=format&fit=crop&w=300&q=80" },
+            { id: 405, name: "Choco Raspberry", price: 15000, category: "snack", desc: "Donat cokelat raspberry.", img: "https://images.unsplash.com/photo-1612240502280-9226cb181280?auto=format&fit=crop&w=300&q=80" },
             { id: 406, name: "Black Elmo", price: 16000, category: "snack", desc: "Donat karakter unik.", img: "https://images.unsplash.com/photo-1551024601-563778a83b71?auto=format&fit=crop&w=300&q=80" },
             { id: 407, name: "Oreo Black Crumble", price: 16000, category: "snack", desc: "Donat remah Oreo hitam.", img: "https://images.unsplash.com/photo-1612240502280-9226cb181280?auto=format&fit=crop&w=300&q=80" },
+            { id: 408, name: "Kit Kat Choco Vanilla", price: 17000, category: "snack", desc: "Topping KitKat Vanilla.", img: "https://images.unsplash.com/photo-1612240502280-9226cb181280?auto=format&fit=crop&w=300&q=80" },
+            { id: 409, name: "Kit Kat Choco Caramel", price: 17000, category: "snack", desc: "Topping KitKat Caramel.", img: "https://images.unsplash.com/photo-1612240502280-9226cb181280?auto=format&fit=crop&w=300&q=80" },
+            { id: 410, name: "Almond Choco Vanilla", price: 17000, category: "snack", desc: "Kacang almond & cokelat.", img: "https://images.unsplash.com/photo-1612240502280-9226cb181280?auto=format&fit=crop&w=300&q=80" },
             { id: 411, name: "Lotus Biscoff", price: 18000, category: "snack", desc: "Donat biskuit Lotus.", img: "https://images.unsplash.com/photo-1619678077553-dfdf886f4a7c?auto=format&fit=crop&w=300&q=80" },
             { id: 412, name: "Donut Bundle (Isi 6)", price: 85000, category: "snack", desc: "Paket hemat isi 6 varian!", img: "https://images.unsplash.com/photo-1558221230-5a3d70685747?auto=format&fit=crop&w=300&q=80" },
+            
+            // Snack Savory
             { id: 413, name: "Chicken Wings", price: 32000, category: "snack", desc: "Sayap ayam goreng.", img: "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format&fit=crop&w=300&q=80" },
+            { id: 414, name: "Sausage", price: 25000, category: "snack", desc: "Sosis goreng/bakar.", img: "https://images.unsplash.com/photo-1595981267035-7b04ca84a82d?auto=format&fit=crop&w=300&q=80" },
             { id: 415, name: "French Fries", price: 25000, category: "snack", desc: "Kentang goreng.", img: "https://images.unsplash.com/photo-1573080496987-a199f8cd4054?auto=format&fit=crop&w=300&q=80" },
+            { id: 416, name: "Vegetable Platter", price: 20000, category: "snack", desc: "Brokoli, tomat, wortel tumis.", img: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=300&q=80" },
+            { id: 417, name: "Simple Salad", price: 22000, category: "snack", desc: "Selada, kol merah, tomat ceri.", img: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=300&q=80" },
         ];
 
-        // --- 2. KERANJANG BELANJA ---
+        // --- KERANJANG BELANJA ---
         let cart = [];
 
         function renderMenu(category = 'all') {
@@ -441,7 +466,7 @@
             cartCountEl.innerText = count + ' Item';
         }
 
-        // --- NEW SMART LOGIC FOR CHECKOUT ---
+        // --- SMART FORM LOGIC ---
         function updatePlaceholder() {
             const type = document.getElementById('order-type').value;
             const note = document.getElementById('customer-note');
@@ -472,7 +497,7 @@
                 return;
             }
 
-            // Validasi Khusus Delivery/Reservasi
+            // Validasi Khusus
             if (type === 'Delivery' && (!note || note.length < 10)) {
                 alert("Untuk Delivery, mohon tulis ALAMAT LENGKAP di kolom catatan ya.");
                 document.getElementById('customer-note').focus();
@@ -487,9 +512,9 @@
             let message = `*Halo Admin Terraskota Wates!* 👋\nSaya mau order via Website:\n\n👤 *Nama:* ${name}\n🍽️ *Tipe:* ${type}\n`;
             
             if(type === 'Delivery') {
-                message += `📍 *Info Pengiriman:* Lihat Catatan\n`;
+                message += `📍 *Info Pengiriman:* Lihat Catatan Bawah\n`;
             } else if (type === 'Reservasi') {
-                message += `📅 *Info Booking:* Lihat Catatan\n`;
+                message += `📅 *Info Booking:* Lihat Catatan Bawah\n`;
             }
 
             message += `--------------------------------\n`;
@@ -508,7 +533,7 @@
             window.open(`https://wa.me/628112931212?text=${encodeURIComponent(message)}`, '_blank');
         }
 
-        // --- 3. SLIDER LOGIC ---
+        // --- SLIDER & UI ---
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slide');
         function nextSlide() {
@@ -520,7 +545,6 @@
         }
         setInterval(nextSlide, 5000);
 
-        // --- 4. NAVIGATION LOGIC ---
         document.getElementById('mobile-menu-btn').addEventListener('click', () => {
             document.getElementById('mobile-menu').classList.toggle('hidden');
         });
@@ -535,7 +559,6 @@
             }
         });
 
-        // Init
         document.addEventListener('DOMContentLoaded', () => {
             renderMenu('all');
         });
