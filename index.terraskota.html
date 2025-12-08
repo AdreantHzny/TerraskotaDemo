@@ -115,12 +115,14 @@
                     <p class="text-lg lg:text-xl text-gray-100 mb-8 leading-relaxed max-w-lg drop-shadow-md">
                         Nikmati perpaduan suasana nyaman dan cita rasa otentik. Destinasi kuliner dan kopi premium terbaik di Kulon Progo.
                     </p>
+                    
                     <div class="flex flex-col sm:flex-row gap-4">
                         <a href="#order" class="px-8 py-4 bg-terra-500 text-white rounded-full font-semibold hover:bg-terra-600 transition shadow-lg text-center border-2 border-terra-500">
-                            Pesan Sekarang
+                            Pesan (Harga Resto)
                         </a>
-                        <a href="#location" class="px-8 py-4 bg-transparent border-2 border-white text-white rounded-full font-semibold hover:bg-white hover:text-terra-900 transition flex items-center justify-center gap-2 backdrop-blur-sm">
-                            <i class="fas fa-map-marker-alt"></i> Lokasi Kami
+                        
+                        <a href="https://gofood.co.id/yogyakarta/restaurant/terraskota-coffee-kitchen-wates-0cc8d7e6-f2b5-4c67-8718-00f9f5cf369b" target="_blank" class="px-8 py-4 bg-white text-green-600 rounded-full font-bold hover:bg-green-50 transition flex items-center justify-center gap-2 shadow-lg border-2 border-white">
+                            <i class="fas fa-motorcycle"></i> Order GoFood
                         </a>
                     </div>
                 </div>
@@ -210,9 +212,20 @@
                                 <textarea id="customer-note" placeholder="Catatan (opsional)" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-terra-500 text-sm resize-none h-20"></textarea>
                             </div>
 
-                            <button onclick="checkoutWhatsApp()" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-xl transition flex items-center justify-center gap-2 shadow-lg hover:shadow-green-500/30">
-                                <i class="fab fa-whatsapp text-xl"></i> Kirim ke Kasir
+                            <button onclick="checkoutWhatsApp()" class="w-full bg-terra-500 hover:bg-terra-600 text-white font-bold py-3 rounded-xl transition flex items-center justify-center gap-2 shadow-lg hover:shadow-terra-500/30">
+                                <i class="fab fa-whatsapp text-xl"></i> Kirim ke Kasir (WA)
                             </button>
+
+                            <div class="relative flex py-2 items-center">
+                                <div class="flex-grow border-t border-gray-200"></div>
+                                <span class="flex-shrink-0 mx-4 text-gray-400 text-xs">ATAU</span>
+                                <div class="flex-grow border-t border-gray-200"></div>
+                            </div>
+
+                            <a href="https://gofood.co.id/yogyakarta/restaurant/terraskota-coffee-kitchen-wates-0cc8d7e6-f2b5-4c67-8718-00f9f5cf369b" target="_blank" class="w-full bg-white border-2 border-green-500 text-green-600 font-bold py-3 rounded-xl transition flex items-center justify-center gap-2 hover:bg-green-50">
+                                <i class="fas fa-motorcycle"></i> Pesan via GoFood
+                            </a>
+                            <p class="text-xs text-center text-gray-400 mt-2">*Harga di GoFood mungkin berbeda</p>
                         </div>
                     </div>
                 </div>
