@@ -63,7 +63,7 @@
                     <a href="#order" class="text-terra-900 hover:text-terra-500 font-medium transition">Pesan Online</a>
                     <a href="#location" class="text-terra-900 hover:text-terra-500 font-medium transition">Lokasi</a>
                     <a href="https://wa.me/628112931212" class="bg-terra-500 text-white px-6 py-2.5 rounded-full font-medium hover:bg-terra-800 transition shadow-lg hover:shadow-terra-500/30 transform hover:-translate-y-0.5">
-                        Reservasi
+                        Chat Admin
                     </a>
                 </div>
 
@@ -81,7 +81,7 @@
                 <a href="#about" class="block px-3 py-3 text-terra-900 font-medium hover:bg-terra-50 rounded-lg">Cerita Kami</a>
                 <a href="#order" class="block px-3 py-3 text-terra-900 font-medium hover:bg-terra-50 rounded-lg">Pesan Menu</a>
                 <a href="#location" class="block px-3 py-3 text-terra-900 font-medium hover:bg-terra-50 rounded-lg">Lokasi</a>
-                <a href="https://wa.me/628112931212" class="block px-3 py-3 text-terra-500 font-bold border-t mt-2">Reservasi Sekarang</a>
+                <a href="https://wa.me/628112931212" class="block px-3 py-3 text-terra-500 font-bold border-t mt-2">Chat Admin</a>
             </div>
         </div>
     </nav>
@@ -118,7 +118,7 @@
                     
                     <div class="flex flex-col sm:flex-row gap-4">
                         <a href="#order" class="px-8 py-4 bg-terra-500 text-white rounded-full font-semibold hover:bg-terra-600 transition shadow-lg text-center border-2 border-terra-500">
-                            Pesan (Harga Resto)
+                            Pesan (Delivery/Dine In)
                         </a>
                         
                         <a href="https://gofood.co.id/yogyakarta/restaurant/terraskota-coffee-kitchen-wates-0cc8d7e6-f2b5-4c67-8718-00f9f5cf369b" target="_blank" class="px-8 py-4 bg-white text-green-600 rounded-full font-bold hover:bg-green-50 transition flex items-center justify-center gap-2 shadow-lg border-2 border-white">
@@ -205,11 +205,15 @@
                             
                             <div class="space-y-3">
                                 <input type="text" id="customer-name" placeholder="Nama Pemesan" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-terra-500 text-sm">
-                                <select id="order-type" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-terra-500 text-sm bg-white">
+                                
+                                <select id="order-type" onchange="updatePlaceholder()" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-terra-500 text-sm bg-white font-medium text-terra-900">
                                     <option value="Dine In">Makan di Tempat (Dine In)</option>
                                     <option value="Take Away">Bungkus (Take Away)</option>
+                                    <option value="Delivery">Delivery (Kurir Resto)</option>
+                                    <option value="Reservasi">Booking Meja (Pre-order)</option>
                                 </select>
-                                <textarea id="customer-note" placeholder="Catatan (opsional)" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-terra-500 text-sm resize-none h-20"></textarea>
+                                
+                                <textarea id="customer-note" placeholder="Catatan (opsional)..." class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-terra-500 text-sm resize-none h-24"></textarea>
                             </div>
 
                             <button onclick="checkoutWhatsApp()" class="w-full bg-terra-500 hover:bg-terra-600 text-white font-bold py-3 rounded-xl transition flex items-center justify-center gap-2 shadow-lg hover:shadow-terra-500/30">
@@ -437,19 +441,59 @@
             cartCountEl.innerText = count + ' Item';
         }
 
+        // --- NEW SMART LOGIC FOR CHECKOUT ---
+        function updatePlaceholder() {
+            const type = document.getElementById('order-type').value;
+            const note = document.getElementById('customer-note');
+            
+            if(type === 'Delivery') {
+                note.placeholder = "WAJIB ISI: Alamat Lengkap & Link Google Maps (Shareloc)...";
+                note.focus();
+            } else if (type === 'Reservasi') {
+                note.placeholder = "WAJIB ISI: Tanggal, Jam, & Jumlah Orang (misal: Sabtu 19.00, 4 org)...";
+                note.focus();
+            } else {
+                note.placeholder = "Catatan tambahan (pedas, tanpa es, dll)...";
+            }
+        }
+
         function checkoutWhatsApp() {
             if (cart.length === 0) {
                 alert("Keranjang masih kosong, Mas/Mba. Pilih menu dulu ya!");
                 return;
             }
+            
             const name = document.getElementById('customer-name').value;
             const type = document.getElementById('order-type').value;
             const note = document.getElementById('customer-note').value;
+            
             if (!name) {
                 alert("Mohon isi nama pemesan dulu ya.");
                 return;
             }
-            let message = `*Halo Admin Terraskota Wates!* 👋\nSaya mau pesan via Website:\n\n👤 *Nama:* ${name}\n🍽️ *Tipe:* ${type}\n--------------------------------\n`;
+
+            // Validasi Khusus Delivery/Reservasi
+            if (type === 'Delivery' && (!note || note.length < 10)) {
+                alert("Untuk Delivery, mohon tulis ALAMAT LENGKAP di kolom catatan ya.");
+                document.getElementById('customer-note').focus();
+                return;
+            }
+            if (type === 'Reservasi' && (!note || note.length < 5)) {
+                alert("Untuk Reservasi Meja, mohon tulis JAM & TANGGAL di kolom catatan ya.");
+                document.getElementById('customer-note').focus();
+                return;
+            }
+
+            let message = `*Halo Admin Terraskota Wates!* 👋\nSaya mau order via Website:\n\n👤 *Nama:* ${name}\n🍽️ *Tipe:* ${type}\n`;
+            
+            if(type === 'Delivery') {
+                message += `📍 *Info Pengiriman:* Lihat Catatan\n`;
+            } else if (type === 'Reservasi') {
+                message += `📅 *Info Booking:* Lihat Catatan\n`;
+            }
+
+            message += `--------------------------------\n`;
+            
             let total = 0;
             cart.forEach(item => {
                 const subtotal = item.price * item.qty;
@@ -457,8 +501,10 @@
                 message += `▪️ ${item.qty}x ${item.name} \n   (Rp ${subtotal.toLocaleString()})\n`;
             });
             message += `--------------------------------\n*TOTAL: Rp ${total.toLocaleString()}*\n`;
-            if (note) message += `\n📝 *Catatan:* ${note}\n`;
+            
+            if (note) message += `\n📝 *Catatan/Alamat:* ${note}\n`;
             message += `\nMohon diproses ya, terima kasih!`;
+            
             window.open(`https://wa.me/628112931212?text=${encodeURIComponent(message)}`, '_blank');
         }
 
